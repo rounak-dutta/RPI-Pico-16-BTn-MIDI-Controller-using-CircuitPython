@@ -5,8 +5,8 @@
 # Keypad Midi Controller
 # By Rounak Dutta
 #
-# Huge Thank You! to Adafruit Industries for the libraries and
-# the circuit-python environment
+# Huge THANK YOU! to Adafruit Industries for CircuitPython and
+# the libraries, which made this project possible.
 #
 import board
 import digitalio
@@ -19,7 +19,7 @@ import time
 # import random
 import usb_midi
 import adafruit_midi
-# from adafruit_midi.control_change import ControlChange
+from adafruit_midi.control_change import ControlChange
 from adafruit_midi.note_off import NoteOff
 from adafruit_midi.note_on import NoteOn
 # from adafruit_midi.pitch_bend import PitchBend
@@ -45,6 +45,9 @@ displayio.release_displays()
 # I2C 0.96 Blue OLED Connections: sda-pin: GP20 and scl-pin: GP21;              #
 #                            vdd, vss to 3.3V and gnd respectively              #
 #                            Address: 0x3C                                      #
+#                                                                               #
+# Touch Input for Sustain:                                                      #
+#               GP11 pin, and a 1meg resistor pull-down from the pin to gnd.    #
 # ###############################################################################
 
 # Initializing GPIOs for the button matrix
@@ -194,12 +197,12 @@ def scanKbd():
 # Initializing Analog Input Pin: (maybe for future)
 # velPot = AnalogIn(board.GP26)
 
-# Setting Up RPI built-in LED (maybe for future)
-# led = digitalio.DigitalInOut(board.GP25)
-# led.direction = digitalio.Direction.OUTPUT
+# Setting Up RPI built-in LED
+susLed = digitalio.DigitalInOut(board.GP25)
+susLed.direction = digitalio.Direction.OUTPUT
 
 # Setting Touch-pin for Sustain Input
-# sustain = touchio.TouchIn(board.GP16)
+susIn = touchio.TouchIn(board.GP11)
 
 # Setting the Rotary encoder Pins
 encClk = digitalio.DigitalInOut(board.GP14)
@@ -294,6 +297,7 @@ sclSel = 0
 chrdMode = 0
 chrdType = 1
 chrdRoot = []
+sustain = False
 
 # Prev state for reading encoder
 encPrevState = encClk.value
@@ -442,7 +446,7 @@ def sendMidiChords(buttonsPressed):
             chrdType = int(button / 4)
             dispChrdTxt2.text = chrdStr[chrdType - 1]
         else:
-            chrdRoot.append(button - int(button / 4))  
+            chrdRoot.append(button - int(button / 4))
     if (chrdRoot):
         noteVal = (octIndex*12 + keyIndex + noteList[chrdRoot[-1] - 1])
         curNotes.append(noteVal)
@@ -501,10 +505,19 @@ def sendMidiChords(buttonsPressed):
 
 # Starting the functional Loop
 while True:
-    # Reading Touch-Input
-    # sustain.threshold = 9000
-    # print(sustain.value)
-    # time.sleep(1)
+    # Reading Touch-Input for Sustain
+    susIn.threshold = 700
+    if (susIn.value):
+        time.sleep(dbDelay2)
+        if (susIn.value):
+            sustain = not sustain
+            # Send Sustain Control
+            if(sustain):
+                susLed.value = True
+                midi.send(ControlChange(64, 127))
+            else:
+                susLed.value = False
+                midi.send(ControlChange(64, 0))
 
     # Reading the Keypad
     buttonsPressed = scanKbd()
