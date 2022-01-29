@@ -21,15 +21,17 @@ A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Cir
                         13(j,k)  14(j,d)  15(j,e)  16(j,i)
                         Encoder-Switch (h,k)
 
-# 2. Ecoder Connection:  L to R, knob facing towards viewer:
-                    clk (pin-1): GP14 and dt (pin-3): GP15, com (pin-2): Gnd
+# 2. Ecoder Connection:  
+                        L to R, knob facing towards viewer:
+                        clk (pin-1): GP14 and dt (pin-3): GP15, com (pin-2): Gnd
 
-# 3. I2C 0.96 Blue OLED Connections: sda-pin: GP20 and scl-pin: GP21; 
-                                vdd, vss to 3.3V and gnd respectively 
+# 3. I2C 0.96 Blue OLED Connections: 
+                        sda-pin: GP20 and scl-pin: GP21; 
+                        vdd, vss to 3.3V and gnd respectively 
                         Address: 0x3C
 
 # 4. Touch Input for Sustain:
-                    GP11 pin, and a 1meg resistor pull-down from the pin to gnd.
+                        GP11 pin, and a 1meg resistor pull-down from the pin to gnd.
 
 # Notes: 
     1. The keypad I have used here is non-standard. I found and bought the same from my local electronic shop, and it is most likely a replacement part for land-line telephone. But the code in the scanKBD() function, can be easily modified to accomodate the readily available 4x4 matrix keypads.
