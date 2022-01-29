@@ -1,5 +1,19 @@
 # RPI-Pico-16-BTn-MIDI-Controller-using-CircuitPython
-A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Circuit Python
+    A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Circuit Python.
+    
+YouTube Demo Link: 
+
+# Detailed Description:
+    The device shows up and acts as general MIDI device in PC or Android. I have tested in Windows 10 with Waveform-11 and in Android Smartphone with FL-Studio mobile, and it works with both and device is recognized without any drivers.
+
+    The controller is USB bus powered and has 16-buttons in the keypad, which can be used to send MIDI notes. Multiple notes can be sent at ones, but the polyphony is limited by the ghost-note effect of the 4x4 button matrix. This can be fixed by using diodes with switches, one can google for "diode keypad matrix" regarding the same for more information.
+    
+    The controller's GUI consists of the 128x64 oled screen and the rotary encoder. The notes for each key in the keypad is displayed and with the rotary encoder the velocity value can be selected, as well as transpose and octave. 
+    
+    The controller also has a scale mode, where currently 10 scales can be selected, with chromatic-scale as the default.
+    It also has a chord mode, where Power, Major, Minor and Diminshed chords can be sent by presseing only one button.
+    
+    For more information and a demo of the features, please visit the YouTube link.
 
 # Parts Required (excluding the PC, MIDI-host-device and the usb-cable):
     1. Raspberry-Pi Pico microcontroller - 1pc
@@ -39,3 +53,12 @@ A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Cir
     3. The oled brightness is currently set to 0.4 (i.e., 40%), and the same can be changed in the "Initializing the 0.96inch OLED Display" portion of the code.
     4. The threshold for the touch-input (for sustain) can be set in the "Setting Touch-pin for Sustain Input" portion of the code
     5. If the oled screen has different address (or different I2C speed, here 1,000,000 is used), the same can be modified in the "Initializing the 0.96inch OLED Display" section.
+
+
+# Setting up and programming the RPI-Pico:
+    1. For a new/ fresh RPI-Pico which is not setup for circuit python, press and hold the "bootsel" button on the Pico, and then plugin to the PC and release the button.
+    2. The Pico should show-up as a drive, and in that drive copy the the CircuitPython UF2 file, either from this repository or from the CircuitPython page, link mentioned below.
+    3. After the UF2 file is copied, the Pico now appears as a new drive ("CIRCUITPY") and it should contain the "lib" folder and the "code.py" file.
+    4. In the lib-folder all the required libraries goes, and one can copy the contents of the lib-folder attached in this repository or download the corresponding latest versions from the CircuitPython page. *** Please make sure, the UF2 file and the libs used are of the same version, otherwise errors may occur ***.
+    5. In the "code.py" file, copy the contents of the "16-BTn_MIDI_Controller_ver1.py" file in this repository, and as soon as the changes are saved in the "code.py" file, the code should start running.
+    6. Please make the required changes to the "code.py" file to match the hardware connections in ones design.
