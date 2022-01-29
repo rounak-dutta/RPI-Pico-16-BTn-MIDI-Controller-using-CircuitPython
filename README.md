@@ -2,15 +2,15 @@
     A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Circuit Python.
 
 # Links/ References:
-YouTube Link for My Demo: 
-CircuitPython UF2 file Download: https://circuitpython.org/board/raspberry_pi_pico/
-CircuitPython Library Download: https://circuitpython.org/libraries
-CircuitPython Docs on the modules used: https://circuitpython.readthedocs.io/en/latest/shared-bindings/displayio/index.html
-Mu Editor Download Link: https://codewith.mu/
+    YouTube Link for My Demo: 
+    CircuitPython UF2 file Download: https://circuitpython.org/board/raspberry_pi_pico/
+    CircuitPython Library Download: https://circuitpython.org/libraries
+    CircuitPython Docs on the modules used: https://circuitpython.readthedocs.io/en/latest/shared-bindings/displayio/index.html
+    Mu Editor Download Link: https://codewith.mu/
 
-*** Please make sure to match the library and the UF2 file versions ***
-*** Even Notepad can be used to modify the "code.py" file on the RPI-Pico, but Mu editor has the Serial-terminal integrated and also checks for syntax and other issues in the code, hence I used the above. ***
-*** Only issue with (the version of Mu) editor I have is that it crashes if large amoumnt of serial data needs to be displayed and/or the data is updated too fast in the serial terminal. ***
+    *** Please make sure to match the library and the UF2 file versions ***
+    *** Even Notepad can be used to modify the "code.py" file on the RPI-Pico, but Mu editor has the Serial-terminal integrated and also checks for syntax and other issues in the code, hence I used the above. ***
+    *** Only issue with (the version of Mu) editor I have is that it crashes if large amoumnt of serial data needs to be displayed and/or the data is updated too fast in the serial terminal. ***
 
 # Detailed Description of the project/ device:
     The aim is to create a simple and portable USB MIDI controller to be used with DAWs availble on mobile devices, e.g., FL Studio Mobile, Garage Band, etc. 
