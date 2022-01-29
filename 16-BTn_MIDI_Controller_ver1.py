@@ -203,6 +203,9 @@ susLed.direction = digitalio.Direction.OUTPUT
 
 # Setting Touch-pin for Sustain Input
 susIn = touchio.TouchIn(board.GP11)
+# Setup the threshold according to required sensitivity,
+# Going lower than 600 may cause noise/ false triggers
+susIn.threshold = 700
 
 # Setting the Rotary encoder Pins
 encClk = digitalio.DigitalInOut(board.GP14)
@@ -508,9 +511,6 @@ def sendMidiChords(buttonsPressed):
 # Starting the functional Loop
 while True:
     # Reading Touch-Input for Sustain
-    # Setup the threshold according to required sensitivity,
-    # Going lower than 600 may cause noise/ false triggers
-    susIn.threshold = 700
     if (susIn.value):
         time.sleep(dbDelay2)
         if (susIn.value):
