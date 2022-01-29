@@ -227,8 +227,10 @@ midi = adafruit_midi.MIDI(
 #   4   48  49  50  51  52  53  54  55  56  57  58  59
 # ...
 # Pitch Bend is 14-bit-value (not used), while notes and related messages are 7-bits
+# MIDI ControlChange command 64(decimal) signifies the sustain, and the corresponding 
+# values of 0 and 127, sustain off and on respectively.
 
-# Default Values
+# Default Values of the notes and the 0.96 oled screen menu
 noteStart = 48  # (C4)
 noteStr = [
     "C_ ", "C# ", "D_ ", "D# ", "E_ ", "F_ ", "F# ", "G_ ", "G# ", "A_ ", "A# ", "B_ "
@@ -506,6 +508,8 @@ def sendMidiChords(buttonsPressed):
 # Starting the functional Loop
 while True:
     # Reading Touch-Input for Sustain
+    # Setup the threshold according to required sensitivity,
+    # Going lower than 600 may cause noise/ false triggers
     susIn.threshold = 700
     if (susIn.value):
         time.sleep(dbDelay2)
