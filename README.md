@@ -11,7 +11,7 @@ A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Cir
 
 # Hardware Connection Information:
 
-1. Currrent Keypad Setup:
+# 1. Currrent Keypad Setup:
     Keypad Pins:      a   b   c   d   e   f   g   h   i   j   k 
     RPI Pico Pins:    GP0 GP1 GP2 GP3 GP4 GP5 GP6 GP7 GP8 GP9 GP10
 
@@ -21,14 +21,14 @@ A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Cir
                         13(j,k)  14(j,d)  15(j,e)  16(j,i)
                         Encoder-Switch (h,k)
 
-    Ecoder Connection:  L to R, knob facing towards viewer:
+# 2. Ecoder Connection:  L to R, knob facing towards viewer:
                     clk (pin-1): GP14 and dt (pin-3): GP15, com (pin-2): Gnd
 
-    I2C 0.96 Blue OLED Connections: sda-pin: GP20 and scl-pin: GP21; 
+# 3. I2C 0.96 Blue OLED Connections: sda-pin: GP20 and scl-pin: GP21; 
                                 vdd, vss to 3.3V and gnd respectively 
                         Address: 0x3C
 
-    Touch Input for Sustain:
+# 4. Touch Input for Sustain:
                     GP11 pin, and a 1meg resistor pull-down from the pin to gnd.
 
 # Notes: 
