@@ -1,7 +1,7 @@
 # RPI-Pico-16-BTn-MIDI-Controller-using-CircuitPython
     A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Circuit Python.
 
-# YouTube Link for My Demo: 
+# YouTube Link for the Device Usage Demo: 
     https://youtu.be/kVHYq4UNdmo
     
 # Other Links/ References:
