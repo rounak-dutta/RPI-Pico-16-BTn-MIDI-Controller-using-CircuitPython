@@ -2,7 +2,7 @@
     A simple portable USB MIDI controller based on Raspberry-PI Pico, written in Circuit Python.
 
 # Links/ References:
-    YouTube Link for My Demo: 
+    YouTube Link for My Demo: https://youtu.be/kVHYq4UNdmo
     CircuitPython UF2 file Download: https://circuitpython.org/board/raspberry_pi_pico/
     CircuitPython Library Download: https://circuitpython.org/libraries
     CircuitPython Docs on the modules used: https://circuitpython.readthedocs.io/en/latest/shared-bindings/displayio/index.html
